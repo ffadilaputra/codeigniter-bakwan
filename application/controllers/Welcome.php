@@ -25,7 +25,7 @@ class Welcome extends MY_Controller {
 
     public function index()
 	{
-	    $data['data'] = Sample::all();
-		$this->view('welcome_message', $data);
+//	    $data['data'] = Sample::all();
+		$this->view('welcome_message');
 	}
 }
