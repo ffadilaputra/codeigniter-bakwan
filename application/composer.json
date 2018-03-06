@@ -12,7 +12,8 @@
 	},
 	"require": {
 		"php": ">=5.3.7",
-		"illuminate/database": "^5.6"
+		"illuminate/database": "^5.6",
+		"philo/laravel-blade": "^3.1"
 	},
 	"autoload": {
 		"classmap": [
