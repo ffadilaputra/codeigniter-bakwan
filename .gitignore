@@ -18,3 +18,5 @@ application/logs/*
 
 # jetbrains
 .idea
+
+/vendor/
