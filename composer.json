@@ -1,19 +1,24 @@
 {
-    "name": "ivan/codeigniter-extended",
-    "license": "MIT",
-    "authors": [
-      {
-        "name": "M Nindra Zaka",
-        "email": "mnindrazaka@gmail.com"
-      },
-      {
-        "name": "Ivan Fadila Putra",
-        "email": "i.fadilaputra@gmail.com"
-      }
-    ],
-    "require": {
-        "nesbot/carbon": "^1.23",
-        "philo/laravel-blade": "3.*",
-        "illuminate/database": "5.*"
+  "name": "ivan/codeigniter-extended",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "M Nindra Zaka",
+      "email": "mnindrazaka@gmail.com"
+    },
+    {
+      "name": "Ivan Fadila Putra",
+      "email": "i.fadilaputra@gmail.com"
     }
+  ],
+  "require": {
+    "nesbot/carbon": "^1.23",
+    "philo/laravel-blade": "3.*",
+    "illuminate/database": "5.*"
+  },
+  "autoload": {
+    "classmap": [
+      "application/models"
+    ]
+  }
 }
