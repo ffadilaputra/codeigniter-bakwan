@@ -1,7 +1,7 @@
 @extends('template')
 
 @section('content')
-    <form action="{{ base_url('Beranda/store') }}" method="post">
+    <form action="{{ base_url('biodata/store') }}" method="post">
         <div class="form-group">
             <label for="nim">NIM</label>
             <input type="text" name="nim" class="form-control" placeholder="Masukkan NIM">

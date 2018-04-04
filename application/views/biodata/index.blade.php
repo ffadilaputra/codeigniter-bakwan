@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <a class="btn btn-primary" href="{{ base_url('beranda/create') }}">Tambah</a>
+    <a class="btn btn-primary" href="{{ base_url('biodata/create') }}">Tambah</a>
     <br><br>
 
     <div class="table-responsive">
@@ -25,9 +25,9 @@
                     <td>{{ $value->alamat }}</td>
                     <td>
                         <div class="btn-group">
-                            <button type="button" onclick="window.location='{{ base_url('beranda/show/' . $value->id)  }}'" class="btn btn-primary">Detail</button>
-                            <button type="button" onclick="window.location='{{ base_url('beranda/edit/' . $value->id)  }}'" class="btn btn-warning">Ubah</button>
-                            <button type="button" onclick="window.location='{{ base_url('beranda/delete/' . $value->id)  }}'" class="btn btn-danger">Hapus</button>
+                            <button type="button" onclick="window.location='{{ base_url('biodata/show/' . $value->id)  }}'" class="btn btn-primary">Detail</button>
+                            <button type="button" onclick="window.location='{{ base_url('biodata/edit/' . $value->id)  }}'" class="btn btn-warning">Ubah</button>
+                            <button type="button" onclick="window.location='{{ base_url('biodata/delete/' . $value->id)  }}'" class="btn btn-danger">Hapus</button>
                         </div>
                     </td>
                 </tr>
