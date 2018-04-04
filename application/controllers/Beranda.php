@@ -9,6 +9,15 @@ class Beranda extends MY_Controller {
 		$this->view('biodata.index', $data);
 	}
 
+	public function show($id) {
+        $data['biodata_array'] = json_decode(json_encode(BiodataModel::find($id)),TRUE);
+        $data['biodata_object'] = BiodataModel::find($id);
+
+        $data['biodata_query_array'] = json_decode(json_encode(BiodataModel::find($id)),TRUE);
+        $data['biodata_query_object'] = BiodataModel::find($id);
+        $this->view('biodata.show', $data);
+    }
+
 	public function create() {
         $this->view('biodata.create');
     }

@@ -25,6 +25,7 @@
                     <td>{{ $value->alamat }}</td>
                     <td>
                         <div class="btn-group">
+                            <button type="button" onclick="window.location='{{ base_url('beranda/show/' . $value->id)  }}'" class="btn btn-primary">Detail</button>
                             <button type="button" onclick="window.location='{{ base_url('beranda/edit/' . $value->id)  }}'" class="btn btn-warning">Ubah</button>
                             <button type="button" onclick="window.location='{{ base_url('beranda/delete/' . $value->id)  }}'" class="btn btn-danger">Hapus</button>
                         </div>

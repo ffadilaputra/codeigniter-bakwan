@@ -32,6 +32,10 @@
           <li class="nav-item">
             <a class="nav-link" href="{{ base_url() }}">Beranda <span class="sr-only">(current)</span></a>
           </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="{{ base_url('tentang') }}">Tentang <span class="sr-only">(current)</span></a>
+          </li>
         </ul>
       </div>
     </nav>
