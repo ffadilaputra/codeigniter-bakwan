@@ -33,9 +33,13 @@ class MY_Controller extends CI_Controller {
     }
 
     protected function view($view, $data = [], $return = false){
+
+        // check if there is validation error
         if($this->session->flashdata('errors')) {
+            $data['old'] = $this->session->flashdata('old');
             $data['errors'] = $this->session->flashdata('errors');
         } else {
+            $data['old'] = [];
             $validation = $this->validator->make([], []);
             $data['errors'] = $validation->errors();
         }
@@ -52,6 +56,7 @@ class MY_Controller extends CI_Controller {
 
         if($validation->fails()) {
             $this->session->set_flashdata('errors', $validation->errors());
+            $this->session->set_flashdata('old', $request);
             redirect($this->agent->referrer(), 'refresh');
         }
     }

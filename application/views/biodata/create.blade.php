@@ -4,7 +4,7 @@
     <form action="{{ base_url('biodata/store') }}" method="post">
         <div class="form-group">
             <label for="nim">NIM</label>
-            <input type="text" name="nim" class="form-control" placeholder="Masukkan NIM">
+            <input type="text" name="nim" class="form-control" placeholder="Masukkan NIM" value="{{ old("nim") }}">
             @if($errors->has('nim'))
                 <p class="text-danger">{{ $errors->first('nim') }}</p>
             @endif

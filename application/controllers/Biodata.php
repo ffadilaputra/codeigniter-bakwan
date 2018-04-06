@@ -24,7 +24,7 @@ class Biodata extends MY_Controller {
 
     public function store() {
         $this->validate($this->input->post(), [
-            'nim' => 'required|integer',
+            'nim' => 'required|integer|unique:biodata',
             'nama' => 'required|string',
             'alamat' => 'required|string'
         ]);
