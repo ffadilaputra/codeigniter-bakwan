@@ -11,8 +11,13 @@ use Illuminate\Filesystem\Filesystem;
 use Illuminate\Translation\FileLoader;
 use Illuminate\Translation\Translator;
 use Illuminate\Validation\Factory;
+use Illuminate\Database\Capsule\Manager as Capsule;
+use Illuminate\Validation\DatabasePresenceVerifier;
 
 class MY_Controller extends CI_Controller {
+
+    // codeigniter instance
+    protected $instance;
 
     // attribute for view
     protected $blade;
@@ -23,6 +28,10 @@ class MY_Controller extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
+        // set codeigniter instance
+        $this->instance =& get_instance();
+
+        // set blade stuff
         $this->blade = new Blade(VIEWPATH, APPPATH . 'cache');
         $this->data = [];
 
@@ -30,6 +39,7 @@ class MY_Controller extends CI_Controller {
         $loader = new FileLoader(new Filesystem, 'lang');
         $trans = new Translator($loader, 'en');
         $this->validator = new Factory($trans);
+        $this->validator->setPresenceVerifier($this->getPresenceVerifier());
     }
 
     protected function view($view, $data = [], $return = false){
@@ -59,5 +69,20 @@ class MY_Controller extends CI_Controller {
             $this->session->set_flashdata('old', $request);
             redirect($this->agent->referrer(), 'refresh');
         }
+    }
+
+    protected function getPresenceVerifier() {
+        $capsule = new Capsule;
+        $capsule->addConnection([
+            'driver'    => 'mysql',
+            'host'      => $this->instance->db->hostname,
+            'database'  => $this->instance->db->database,
+            'username'  => $this->instance->db->username,
+            'password'  => $this->instance->db->password,
+            'charset'   => $this->instance->db->char_set,
+            'collation' => $this->instance->db->dbcollat,
+            'prefix'    => $this->instance->db->dbprefix
+        ]);
+        return new DatabasePresenceVerifier($capsule->getDatabaseManager());
     }
 }
