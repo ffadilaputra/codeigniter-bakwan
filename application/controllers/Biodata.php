@@ -23,6 +23,12 @@ class Biodata extends MY_Controller {
     }
 
     public function store() {
+        $this->validate($this->input->post(), [
+            'nim' => 'required|integer',
+            'nama' => 'required|string',
+            'alamat' => 'required|string'
+        ]);
+
         BiodataModel::create($this->input->post());
         redirect(base_url('biodata'), 'refresh');
     }
@@ -33,6 +39,12 @@ class Biodata extends MY_Controller {
     }
 
     public function update($id) {
+        $this->validate($this->input->post(), [
+            'nim' => 'required|integer',
+            'nama' => 'required|string',
+            'alamat' => 'required|string'
+        ]);
+
         BiodataModel::find($id)->update($this->input->post());
         redirect(base_url('biodata'), 'refresh');
     }
