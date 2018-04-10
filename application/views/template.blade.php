@@ -11,6 +11,9 @@
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="{{ base_url('assets/bootstrap/css/bootstrap.css') }}">
 
+    <!-- include summernote css -->
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.css" rel="stylesheet">
+
     <!-- Custom styles for this template -->
     <style>
         body {
@@ -38,6 +41,10 @@
           </li>
 
           <li class="nav-item">
+            <a class="nav-link" href="{{ base_url('blog') }}">Blog <span class="sr-only">(current)</span></a>
+          </li>
+
+          <li class="nav-item">
             <a class="nav-link" href="{{ base_url('tentang') }}">Tentang <span class="sr-only">(current)</span></a>
           </li>
         </ul>
@@ -56,6 +63,14 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
     <script src="{{ base_url('assets/bootstrap/js/bootstrap.bundle.js') }}"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('#summernote').summernote();
+        });
+    </script>
   </body>
 </html>

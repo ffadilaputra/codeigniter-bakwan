@@ -85,4 +85,23 @@ class MY_Controller extends CI_Controller {
         ]);
         return new DatabasePresenceVerifier($capsule->getDatabaseManager());
     }
+
+    protected function do_upload($field, $config) {
+        $this->load->library('upload', $config);
+        $uploaded_filename = "";
+
+        if (!$this->upload->do_upload($field)) {
+            $validation = $this->validator->make([], []);
+            $validation->errors()->add($field, strip_tags($this->upload->display_errors()));
+
+            $this->session->set_flashdata('errors', $validation->errors());
+            $this->session->set_flashdata('old', $this->input->post());
+            redirect($this->agent->referrer(), 'refresh');
+        } else {
+            $upload_data = $this->upload->data();
+            $uploaded_filename = $upload_data['file_name'];
+        }
+
+        return $uploaded_filename;
+    }
 }
