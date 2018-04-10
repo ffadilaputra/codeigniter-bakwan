@@ -86,7 +86,29 @@ class MY_Controller extends CI_Controller {
         return new DatabasePresenceVerifier($capsule->getDatabaseManager());
     }
 
-    protected function do_upload($field, $config) {
+    protected function do_upload($field, $path, $type = '', $encrypt = false, $inject_config = []) {
+
+        $config['upload_path'] = $path;
+        $config['encrypt_name'] = $encrypt;
+
+        switch ($type) {
+            case 'image':
+                $config['allowed_types'] = 'jpg|jpeg|png';
+                break;
+            case 'document':
+                $config['allowed_types'] = 'docx|pdf';
+                break;
+            case 'video':
+                $config['allowed_types'] = '3gp|mp4|mkv';
+                break;
+            case 'music':
+                $config['allowed_types'] = 'mp3';
+        }
+
+        foreach ($inject_config as $key => $value) {
+            $config[$key] = $value;
+        }
+
         $this->load->library('upload', $config);
         $uploaded_filename = "";
 

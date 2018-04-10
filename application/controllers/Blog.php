@@ -23,11 +23,7 @@ class Blog extends MY_Controller {
             'judul' => 'required|string',
             'isi' => 'required|string'
         ]);
-
-        $config['upload_path'] = 'assets/upload/blog';
-        $config['allowed_types'] = 'gif|jpg|png';
-        $config['encrypt_name'] = TRUE;
-        $_POST['file'] = $this->do_upload('file', $config);
+        $_POST['file'] = $this->do_upload('file', 'assets/upload/blog', 'image', TRUE);
 
         BlogModel::create($this->input->post());
         redirect(base_url('blog'), 'refresh');
@@ -46,12 +42,9 @@ class Blog extends MY_Controller {
         ]);
 
         if(!empty($_FILES['file']['name'])){
+            $_POST['file'] = $this->do_upload('file', 'assets/upload/blog', 'image', TRUE);
             $blog = BlogModel::find($id);
             unlink('assets/upload/blog/' . $blog->file);
-            $config['upload_path'] = 'assets/upload/blog';
-            $config['allowed_types'] = 'gif|jpg|png';
-            $config['encrypt_name'] = TRUE;
-            $_POST['file'] = $this->do_upload('file', $config);
         }
 
         BlogModel::find($id)->update($this->input->post());
