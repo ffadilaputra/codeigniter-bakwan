@@ -14,4 +14,12 @@ composer install
 ```
 
 ### Configuration
- - Dont forget to configuration in config/database.php :monkey:
+ - Copy .env sample to .env.development for sample below
+```
+DB_DRIVER=mysqli
+DB_HOST=127.0.0.1
+DB_DATABASE=anggal
+DB_USERNAME=ivan
+DB_PASSWORD=ngganteng
+
+```

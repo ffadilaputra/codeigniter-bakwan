@@ -20,3 +20,7 @@ application/logs/*
 .idea
 
 /vendor/
+
+# ENV
+.env.development
+.env.production
