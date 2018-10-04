@@ -1,7 +1,7 @@
-## :rocket: Codeigniter extended
+## :rocket: Codeigniter bakwan
 
 ### Prerequriments
-  - PHP > 5.6
+  - PHP 7 or greater
   - [Composer](https://getcomposer.org/)
 
 ### Installation
